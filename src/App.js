@@ -1,9 +1,12 @@
-import './App.css';
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import Button from "@material-ui/core/Button";
 
 function App() {
   return (
     <div className="App">
-      sdksjds ksdksd
+      <Navbar />
+      {/* <Button variant="contained" style={{backgroundColor:"green"}}>Material UI</Button> */}
     </div>
   );
 }
