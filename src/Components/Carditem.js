@@ -4,22 +4,34 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
+import { makeStyles } from "@material-ui/core";
 
+const styles = makeStyles({
+  cardcontent: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+});
+const imagepath = "https://image.tmdb.org/t/p/w1280";
 export default function Carditem(props) {
+  const classes = styles();
   return (
     <>
-    {console.log(props.imgUrl)}
-      <Card>
-        <CardActionArea>
+      {/* {console.log(movies)} */}
+      <Card className={classes.card}>
+        <CardActionArea >
           <CardMedia
             component="img"
-            height="120"
+            height="400"
             alt="not render"
-            image={props.imgUrl}
+            image={imagepath + props.imgUrl}
           />
-          <CardContent>
+          <CardContent className={classes.cardcontent}>
             <Typography style={{ textAlign: "start" }}>
-              This is card example
+              {props.movieTitle}
+            </Typography>
+            <Typography style={{ textAlign: "start" }}>
+              {props.movieRating}
             </Typography>
           </CardContent>
         </CardActionArea>

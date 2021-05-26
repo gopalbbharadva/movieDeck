@@ -6,11 +6,11 @@ import Movie from "./Components/Movie";
 
 function App() {
   return (
-    <div className="App">
+    <div style={{display:"flex",flexDirection:"column"}} className="App">
       <Router>
-        {/* <Navbar /> */}
+        <Navbar />
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Movie />
           </Route>
           <Route exact path="/Search">

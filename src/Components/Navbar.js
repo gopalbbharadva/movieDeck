@@ -18,6 +18,9 @@ const customStyles = makeStyles({
   appbar: {
     backgroundColor: "#6EE7B7",
   },
+  toolbar:{
+    height:"3rem"
+  },
   typo: {
     color: "black",
   },
@@ -46,7 +49,7 @@ export default function Navbar() {
     <>
       {!flag ? (
         <AppBar elevation="0" className={classes.appbar} position="fixed">
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             <Typography className={classes.typo} variant="h5" color="secondary">
               <a href="#" className={classes.home}>
                 movieDecks
