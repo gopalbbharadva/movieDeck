@@ -29,6 +29,10 @@ export default function Movie() {
     },
   });
   const classes = styles();
+
+  const gridHandler=()=>{
+    console.log("sjdjsdjj")
+  }
   return (
     <>
       <div className={classes.toolbar}></div>
@@ -36,9 +40,8 @@ export default function Movie() {
         <Grid container spacing={4}>
           {movies.map((item) => {
             return (
-              <Grid xs={6} sm={4} lg={3} item>
+              <Grid xs={6} onClick={gridHandler} key={item.id} sm={4} lg={3} item>
                 <Carditem
-                  key={item.id}
                   imgUrl={item.poster_path}
                   movieTitle={item.title}
                   movieRating={item.vote_average}

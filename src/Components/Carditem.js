@@ -11,6 +11,9 @@ const styles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
   },
+  cardimg: {
+    maxWidth: "100%",
+  },
 });
 const imagepath = "https://image.tmdb.org/t/p/w1280";
 export default function Carditem(props) {
@@ -18,11 +21,12 @@ export default function Carditem(props) {
   return (
     <>
       {/* {console.log(movies)} */}
-      <Card className={classes.card}>
-        <CardActionArea >
+      <Card  className={classes.card}>
+        <CardActionArea>
           <CardMedia
+            className={classes.cardimg}
             component="img"
-            height="400"
+            height="350"
             alt="not render"
             image={imagepath + props.imgUrl}
           />

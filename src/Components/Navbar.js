@@ -16,10 +16,10 @@ const customStyles = makeStyles({
     },
   },
   appbar: {
-    backgroundColor: "#6EE7B7",
+    backgroundColor: "#8B5CF6",
   },
-  toolbar:{
-    height:"3rem"
+  toolbar: {
+    height: "3rem",
   },
   typo: {
     color: "black",
@@ -51,12 +51,12 @@ export default function Navbar() {
         <AppBar elevation="0" className={classes.appbar} position="fixed">
           <Toolbar className={classes.toolbar}>
             <Typography className={classes.typo} variant="h5" color="secondary">
-              <a href="#" className={classes.home}>
-                movieDecks
-              </a>
+              <NavLink to="/" className={classes.home}>
+                moviesDeck
+              </NavLink>
             </Typography>
             <div className={classes.maindiv}>
-              <NavLink style={{textDecoration:"none"}} to="/Search">
+              <NavLink style={{ textDecoration: "none" }} to="/Search">
                 <Button
                   onClick={btnHandler}
                   className={classes.btn}
