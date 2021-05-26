@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/movieDeck/static/css/main.9d5b29c0.chunk.css",
-    "main.js": "/movieDeck/static/js/main.bc93eb4f.chunk.js",
-    "main.js.map": "/movieDeck/static/js/main.bc93eb4f.chunk.js.map",
+    "main.js": "/movieDeck/static/js/main.c4103e84.chunk.js",
+    "main.js.map": "/movieDeck/static/js/main.c4103e84.chunk.js.map",
     "runtime-main.js": "/movieDeck/static/js/runtime-main.01e4dd25.js",
     "runtime-main.js.map": "/movieDeck/static/js/runtime-main.01e4dd25.js.map",
     "static/js/2.0a5c8cbc.chunk.js": "/movieDeck/static/js/2.0a5c8cbc.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.01e4dd25.js",
     "static/js/2.0a5c8cbc.chunk.js",
     "static/css/main.9d5b29c0.chunk.css",
-    "static/js/main.bc93eb4f.chunk.js"
+    "static/js/main.c4103e84.chunk.js"
   ]
 }
