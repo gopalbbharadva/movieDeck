@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/movieDeck">
             <Movie />
           </Route>
           <Route exact path="/Search">
