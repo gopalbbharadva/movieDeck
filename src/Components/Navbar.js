@@ -65,12 +65,16 @@ export default function Navbar() {
                   Search
                 </Button>
               </NavLink>
-              <Button className={classes.btn} variant="contained">
-                Sign up
-              </Button>
-              <Button className={classes.btn} variant="contained">
-                Sign in
-              </Button>
+              <NavLink style={{ textDecoration: "none" }} to="/Signup">
+                <Button className={classes.btn} variant="contained">
+                  Sign up
+                </Button>
+              </NavLink>
+              <NavLink style={{ textDecoration: "none" }} to="/Signin">
+                <Button className={classes.btn} variant="contained">
+                  Sign in
+                </Button>
+              </NavLink>
             </div>
           </Toolbar>
         </AppBar>
