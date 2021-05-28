@@ -21,7 +21,7 @@ const styles = makeStyles({
 });
 
 const setColor = (movieVote) => {
-  console.log(movieVote);
+  // console.log(movieVote);
   if (movieVote > 7) return "green";
   else if (movieVote > 5 && movieVote < 7) return "yellow";
   else return "red";

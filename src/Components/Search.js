@@ -10,6 +10,7 @@ const search_api =
   "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
 export default function Search() {
+  let [flag, setFlag] = useState(false);
   const [searchMovie, setSearchMovie] = useState();
   let [movies, SetMovies] = useState([]);
 
@@ -24,8 +25,11 @@ export default function Search() {
       .then((jsonData) => {
         movies = jsonData.results;
         SetMovies(movies);
+        // console.log(movies);
       });
     setSearchMovie("");
+    if (movies.length === 0) setFlag(false);
+    else setFlag(true);
   };
   const styles = makeStyles({
     textfield: {
@@ -34,7 +38,12 @@ export default function Search() {
       margin: "1rem",
     },
     typo: {
-    //   padding: "0.4rem",
+      margin:"1rem",
+      width:"100%",
+      //   padding: "0.4rem",
+      display:"flex",
+      justifyContent:"center",
+      alignItems:'center'
     },
   });
 
@@ -55,19 +64,26 @@ export default function Search() {
           variant="filled"
         />
       </form>
+
       <Container>
         <Grid container spacing={4}>
-          {movies.map((item) => {
-            return (
-              <Grid xs={6} key={item.id} sm={4} lg={3} item>
-                <Carditem
-                  imgUrl={item.poster_path}
-                  movieTitle={item.title}
-                  movieRating={item.vote_average}
-                />
-              </Grid>
-            );
-          })}
+          {flag ? (
+            movies.map((item) => {
+              return (
+                <Grid xs={6} key={item.id} sm={4} lg={3} item>
+                  <Carditem
+                    imgUrl={item.poster_path}
+                    movieTitle={item.title}
+                    movieRating={item.vote_average}
+                  />
+                </Grid>
+              );
+            })
+          ) : (
+            <Typography className={classes.typo} variant="body1">
+              No movies found yet
+            </Typography>
+          )}  
         </Grid>
       </Container>
     </div>

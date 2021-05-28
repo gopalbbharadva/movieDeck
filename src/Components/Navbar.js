@@ -29,6 +29,12 @@ const customStyles = makeStyles({
     display: "flex",
     justifyContent: "flex-end",
   },
+  links: {
+    color:"black",
+    fontSize:"1.5rem",
+    textDecoration: "none",
+    padding: "1rem",
+  },
   home: {
     textDecoration: "none",
     color: "black",
@@ -42,7 +48,7 @@ export default function Navbar() {
   }, []);
   const btnHandler = () => {
     flag = true;
-    console.log(flag);
+    // console.log(flag);
   };
   const classes = customStyles();
   return (
@@ -56,24 +62,24 @@ export default function Navbar() {
               </NavLink>
             </Typography>
             <div className={classes.maindiv}>
-              <NavLink style={{ textDecoration: "none" }} to="/Search">
-                <Button
+              <NavLink className={classes.links} to="/Search">
+                {/* <Button
                   onClick={btnHandler}
                   className={classes.btn}
                   variant="contained"
-                >
-                  Search
-                </Button>
+                > */}
+                Search
+                {/* </Button> */}
               </NavLink>
-              <NavLink style={{ textDecoration: "none" }} to="/Signup">
-                <Button className={classes.btn} variant="contained">
-                  Sign up
-                </Button>
+              <NavLink className={classes.links} to="/Signup">
+                {/* <Button className={classes.btn} variant="contained"> */}
+                Sign up
+                {/* </Button> */}
               </NavLink>
-              <NavLink style={{ textDecoration: "none" }} to="/Signin">
-                <Button className={classes.btn} variant="contained">
-                  Sign in
-                </Button>
+              <NavLink className={classes.links} to="/Signin">
+                {/* <Button className={classes.btn} variant="contained"> */}
+                Sign in
+                {/* </Button> */}
               </NavLink>
             </div>
           </Toolbar>
