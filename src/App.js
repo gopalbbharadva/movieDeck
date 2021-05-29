@@ -11,6 +11,7 @@ import Movie from "./Components/Movie";
 import Signup from "./Components/Signup";
 import Signin from "./Components/Signin";
 import Authprovider from "./Contexts/Autcontext";
+import Favorites from "./Components/Favorites";
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route exact path="/Signin">
               <Signin />
+            </Route>
+            <Route exact path="/Favorites">
+              <Favorites />
             </Route>
             <Redirect to="/" />
           </Switch>

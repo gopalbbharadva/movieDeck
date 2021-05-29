@@ -38,6 +38,7 @@ export default function Search() {
       margin: "1rem",
     },
     typo: {
+      
       margin:"1rem",
       width:"100%",
       //   padding: "0.4rem",
@@ -80,7 +81,7 @@ export default function Search() {
               );
             })
           ) : (
-            <Typography className={classes.typo} variant="body1">
+            <Typography color="secondary" className={classes.typo} variant="body1">
               No movies found yet
             </Typography>
           )}  

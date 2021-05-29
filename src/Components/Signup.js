@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../Contexts/Autcontext";
 import { toast } from "material-react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 
 toast.configure();
 const styles = makeStyles({
@@ -32,24 +33,24 @@ const styles = makeStyles({
 export default function Signup() {
   const classes = styles();
 
+  const route = useHistory();
   let emailRef = useRef("");
   let passwordRef = useRef("");
   let cnfPasswordRef = useRef("");
-  const { signUp } = useAuth();
+  const { signUp, currentUser } = useAuth();
   const [error, setError] = useState();
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
 
     console.log(emailRef.current.value);
-    if (passwordRef.current.value !== cnfPasswordRef.current.value)
-    {
+    if (passwordRef.current.value !== cnfPasswordRef.current.value) {
       toast.error("Password does not match", {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 1500,
       });
-      cnfPasswordRef.current.value='';
-      return
+      cnfPasswordRef.current.value = "";
+      return;
     }
 
     try {
@@ -59,22 +60,24 @@ export default function Signup() {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 1500,
       });
+      route.push("/");
     } catch {
       toast.error("Failed to sign in!!", {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 1500,
       });
       // console.log("Failed to sign in");
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+      cnfPasswordRef.current.value = "";
     }
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
-    cnfPasswordRef.current.value = "";
   };
   return (
     <div className="container">
       <div className="sub-container">
         <Card className={classes.card} variant="outlined">
           <Cardcontent className={classes.cardcontent}>
+            {currentUser && currentUser.email}
             <form className={classes.form} onSubmit={formSubmitHandler}>
               <Typography variant="h4" className="title">
                 Sign Up
