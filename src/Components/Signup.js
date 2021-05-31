@@ -9,6 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../Contexts/Autcontext";
 import { toast } from "material-react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import firebase from 'firebase/app';
 import { useHistory } from "react-router-dom";
 
 toast.configure();

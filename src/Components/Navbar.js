@@ -55,13 +55,13 @@ export default function Navbar() {
   const classes = customStyles();
 
   const logoutUser = () => {
-    signOut();
-    console.log("user logged out");
+    const _isLogout = window.confirm(`Logout user ${currentUser.email}?`);
+    if (_isLogout) signOut();
   };
   return (
     <>
       {!flag ? (
-        <AppBar elevation="0" className={classes.appbar} position="fixed">
+        <AppBar className={classes.appbar} position="fixed">
           <Toolbar className={classes.toolbar}>
             <Typography className={classes.typo} variant="h5" color="secondary">
               <NavLink to="/" className={classes.home}>

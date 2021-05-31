@@ -3,7 +3,7 @@ import Textfield from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Carditem from "./Carditem";
-import { makeStyles } from "@material-ui/core";
+import { Button, makeStyles } from "@material-ui/core";
 import { Container } from "@material-ui/core";
 
 const search_api =
@@ -12,22 +12,34 @@ const search_api =
 export default function Search() {
   let [flag, setFlag] = useState(false);
   const [searchMovie, setSearchMovie] = useState();
-  let [movies, SetMovies] = useState([]);
-
-  //   useEffect(()=>{
-  //         formHandler();
-  //   },[])
+  let [movies, setMovies] = useState([]);
+  const [rating, setRating] = useState();
+  let [ratingMovie, setRatingMovie] = useState([]);
 
   const formHandler = async (e) => {
     e.preventDefault();
+    const voteMovie = [];
+    console.log("formhandler");
     await fetch(search_api + searchMovie)
       .then((data) => data.json())
-      .then((jsonData) => {
-        movies = jsonData.results;
-        SetMovies(movies);
-        // console.log(movies);
+      .then((movies) => {
+        console.log(movies.results);
+        setMovies(movies.results);
       });
+    movies.filter((currentMovie) => {
+      // console.log(searchMovie);
+      if (currentMovie.vote_average <= parseInt(rating)) {
+        voteMovie.push(currentMovie);
+      }
+      console.log(voteMovie);
+      setRatingMovie(voteMovie);
+    });
+    // movies.map((item) => {
+    //   console.log(item.vote_average);
+    // });
+    //
     setSearchMovie("");
+    setRating('');
     if (movies.length === 0) setFlag(false);
     else setFlag(true);
   };
@@ -36,15 +48,15 @@ export default function Search() {
       width: "24rem",
       backgroundClip: "#C4B5FD",
       margin: "1rem",
+      textTransform: "uppercase",
     },
     typo: {
-      
-      margin:"1rem",
-      width:"100%",
+      margin: "1rem",
+      width: "100%",
       //   padding: "0.4rem",
-      display:"flex",
-      justifyContent:"center",
-      alignItems:'center'
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
   });
 
@@ -56,19 +68,45 @@ export default function Search() {
       </Typography>
       <form onSubmit={formHandler}>
         <Textfield
+          required
           value={searchMovie}
           color="primary"
           className={classes.textfield}
-          onChange={(e) => setSearchMovie(e.target.value)}
+          onChange={(e) => setSearchMovie(e.target.value.toLowerCase())}
           label="Search"
           placeholder="Search movies..."
           variant="filled"
         />
+        <Textfield
+          required
+          type="number"
+          value={rating}
+          color="primary"
+          className={classes.textfield}
+          onChange={(e) => setRating(e.target.value)}
+          label="Rating"
+          placeholder="Type rating.."
+          variant="filled"
+        />
+        <Button type="submit" variant="outlined">
+          Search
+        </Button>
       </form>
 
       <Container>
         <Grid container spacing={4}>
-          {flag ? (
+          {ratingMovie.map((item) => {
+            return (
+              <Grid xs={6} key={item.id} sm={4} lg={3} item>
+                <Carditem
+                  imgUrl={item.poster_path}
+                  movieTitle={item.title}
+                  movieRating={item.vote_average}
+                />
+              </Grid>
+            );
+          })}
+          {/* {flag ? (
             movies.map((item) => {
               return (
                 <Grid xs={6} key={item.id} sm={4} lg={3} item>
@@ -81,10 +119,14 @@ export default function Search() {
               );
             })
           ) : (
-            <Typography color="secondary" className={classes.typo} variant="body1">
+            <Typography
+              color="secondary"
+              className={classes.typo}
+              variant="body1"
+            >
               No movies found yet
             </Typography>
-          )}  
+          )} */}
         </Grid>
       </Container>
     </div>
