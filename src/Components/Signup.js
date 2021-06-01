@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../Contexts/Autcontext";
 import { toast } from "material-react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import firebase from 'firebase/app';
+import firebase from "firebase/app";
 import { useHistory } from "react-router-dom";
 
 toast.configure();
@@ -43,8 +43,6 @@ export default function Signup() {
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
-
-    console.log(emailRef.current.value);
     if (passwordRef.current.value !== cnfPasswordRef.current.value) {
       toast.error("Password does not match", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -60,7 +58,8 @@ export default function Signup() {
       toast.success("Account created successfully!!", {
         position: toast.POSITION.BOTTOM_CENTER,
         autoClose: 1500,
-      });
+      }); 
+      // console.log(currentUser)
       route.push("/");
     } catch {
       toast.error("Failed to sign in!!", {
@@ -68,9 +67,9 @@ export default function Signup() {
         autoClose: 1500,
       });
       // console.log("Failed to sign in");
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
-      cnfPasswordRef.current.value = "";
+      // emailRef.current.value = "";
+      // passwordRef.current.value = "";
+      // cnfPasswordRef.current.value = "";
     }
   };
   return (
@@ -78,7 +77,7 @@ export default function Signup() {
       <div className="sub-container">
         <Card className={classes.card} variant="outlined">
           <Cardcontent className={classes.cardcontent}>
-            {currentUser && currentUser.email}
+            
             <form className={classes.form} onSubmit={formSubmitHandler}>
               <Typography variant="h4" className="title">
                 Sign Up
