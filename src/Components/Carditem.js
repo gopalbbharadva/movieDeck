@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,7 +13,9 @@ const styles = makeStyles({
     justifyContent: "space-between",
   },
   cardimg: {
-    maxWidth: "100%",
+    height:'400px',
+    width:'100%',
+    objectFit: "cover",
   },
   title: {
     color: "black",
@@ -27,6 +29,7 @@ const setColor = (movieVote) => {
   else return "red";
 };
 const imagepath = "https://image.tmdb.org/t/p/w1280";
+
 export default function Carditem(props) {
   const classes = styles();
   return (
@@ -34,17 +37,19 @@ export default function Carditem(props) {
       {/* {console.log(movies)} */}
       <Card className={classes.card}>
         <CardActionArea>
-          <CardMedia
-            className={classes.cardimg}
-            component="img"
-            height="350"
-            alt="not render"
-            image={
-              props.imgUrl
-                ? imagepath + props.imgUrl
-                : "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdmllfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-            }
-          />
+          <div className="imagediv">
+            <CardMedia
+              className={classes.cardimg}
+              component="img"
+              height="350"
+              alt="not render"
+              image={
+                props.imgUrl
+                  ? imagepath + props.imgUrl
+                  : "https://images.unsplash.com/photo-1543536448-d209d2d13a1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdmllfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              }
+            />
+          </div>
           <CardContent className={classes.cardcontent}>
             <Typography className={classes.title}>
               {props.movieTitle}
