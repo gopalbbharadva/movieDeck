@@ -108,11 +108,11 @@ export default function Movie() {
             );
           })}
         </Grid>
-        <div onClick={resetFlag}>
+        <div >
           {selectedMovie &&  (
             <Moviemodal
               currentMovie={selectedMovie}
-              selectHandler={setSelectedMovie}
+              setSelectedMovie={setSelectedMovie}
             />
           )}
         </div>

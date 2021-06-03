@@ -11,6 +11,7 @@ const search_api =
   "https://api.themoviedb.org/3/search/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
 
 export default function Search() {
+  let voteMovie = [];
   let [flag, setFlag] = useState(false);
   const [searchMovie, setSearchMovie] = useState();
   let [movies, setMovies] = useState([]);
@@ -20,22 +21,24 @@ export default function Search() {
 
   const formHandler = async (e) => {
     e.preventDefault();
-    const voteMovie = [];
     console.log("formhandler");
     await fetch(search_api + searchMovie)
       .then((data) => data.json())
       .then((movies) => {
-        console.log(movies.results);
-        setMovies(movies.results);
+        // console.log(movies.results);
+        // // setMovies(movies.results);
+        // setRatingMovie(movies.results);
+        movies.results.filter((item) => {
+          if (item.vote_average <= parseInt(rating)) voteMovie.push(item);
+          setRatingMovie(voteMovie);
+        });
       });
-    movies.filter((currentMovie) => {
-      // console.log(searchMovie);
-      if (currentMovie.vote_average <= parseInt(rating)) {
-        voteMovie.push(currentMovie);
-      }
-      console.log(voteMovie);
-      setRatingMovie(voteMovie);
-    });
+    // ratingMovie.filter((currentMovie) => {
+    //   console.log("filter");
+    //   if (currentMovie.vote_average <= parseInt(rating)) {
+    //     voteMovie.push(currentMovie);
+    //   }
+    // });
     // movies.map((item) => {
     //   console.log(item.vote_average);
     // });
@@ -67,10 +70,10 @@ export default function Search() {
     setSelectedMovie(currentMovie);
     // setFlag(true);
   };
-  const resetFlag = () => {
-    setSelectedMovie(null);
-    // setFlag(false);
-  };
+  // const resetFlag = () => {
+  //   setSelectedMovie(null);
+  //   // setFlag(false);
+  // };
 
   return (
     <div style={{ marginTop: "5rem" }}>
@@ -99,7 +102,7 @@ export default function Search() {
           placeholder="Type rating.."
           variant="filled"
         />
-        <Button type="submit" variant="outlined">
+        <Button type="submit" style={{marginTop:'2rem'}} variant="outlined">
           Search
         </Button>
       </form>
@@ -124,8 +127,13 @@ export default function Search() {
               </Grid>
             );
           })}
-          <div onClick={resetFlag}>
-            {selectedMovie  && <Moviemodal currentMovie={selectedMovie} />}
+          <div>
+            {selectedMovie && (
+              <Moviemodal
+                currentMovie={selectedMovie}
+                setSelectedMovie={setSelectedMovie}
+              />
+            )}
           </div>
           {/* {flag ? (
             movies.map((item) => {
