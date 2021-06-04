@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import {useAuth} from '../Contexts/Autcontext';
+import { useAuth } from "../Contexts/Autcontext";
+import { motion } from "framer-motion";
+import firebase from "firebase";
 
 const imagepath = "https://image.tmdb.org/t/p/w1280";
 
@@ -9,7 +11,7 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
   //     currentMovie=null;
   //     setFlag(false);
 
-  const {currentUser}=useAuth();
+  const { currentUser } = useAuth();
 
   const modalHandler = (e) => {
     if (e.target.classList.contains("main-modal")) setSelectedMovie(null);
@@ -20,16 +22,31 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
     else if (rating < 7 && rating > 4) return "yellow";
     else return "red";
   };
+
+  const addToFavorites = () => {
+    firebase.firestore().collection("users").doc(currentUser.uid).set(
+      {
+        title: currentMovie.title,
+        image: currentMovie.poster_path,
+        rating: currentMovie.vote_average,
+      },{merge:true}
+    );
+  };
+
   return (
     // <>{console.log(currentMovie)}</>
     <div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       onClick={modalHandler}
       className="main-modal"
       //   initial={{ opacity: 0 }}
       //   animate={{ opacity: 1 }}
     >
       <div className="sub-modal">
-        <img
+        <motion.img
+          initial={{ y: "-10vh" }}
+          animate={{ y: "0" }}
           src={
             currentMovie.backdrop_path
               ? imagepath + currentMovie.backdrop_path
@@ -40,7 +57,7 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
           // animate={{ y: "0" }}
         />
         <div className="modal-overview">
-          {currentUser && <button>Add</button>}
+          {currentUser && <button onClick={addToFavorites}>Add</button>}
           <h3>Overview</h3>
           <p className="over-para">{currentMovie.overview}</p>
           <h3>Rating</h3>

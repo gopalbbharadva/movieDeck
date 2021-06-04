@@ -33,16 +33,6 @@ export default function Search() {
           setRatingMovie(voteMovie);
         });
       });
-    // ratingMovie.filter((currentMovie) => {
-    //   console.log("filter");
-    //   if (currentMovie.vote_average <= parseInt(rating)) {
-    //     voteMovie.push(currentMovie);
-    //   }
-    // });
-    // movies.map((item) => {
-    //   console.log(item.vote_average);
-    // });
-    //
     setSearchMovie("");
     setRating("");
     if (movies.length === 0) setFlag(false);

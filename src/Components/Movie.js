@@ -26,7 +26,7 @@ export default function Movie() {
     await fetch(movie_api)
       .then((allMovies) => allMovies.json())
       .then((json) => {
-        console.log(json.results);
+        // console.log(json.results[0]);
         movies = json.results;
         setMovies(movies);
       });
@@ -79,10 +79,10 @@ export default function Movie() {
     // setFlag(true);
   };
 
-  const resetFlag = () => {
-    setSelectedMovie(null);
-    // setFlag(false);
-  };
+  // const resetFlag = () => {
+  //   setSelectedMovie(null);
+  //   // setFlag(false);
+  // };
 
   return (
     <>
