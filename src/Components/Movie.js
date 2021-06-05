@@ -26,7 +26,7 @@ export default function Movie() {
     await fetch(movie_api)
       .then((allMovies) => allMovies.json())
       .then((json) => {
-        // console.log(json.results[0]);
+        console.log(json.results);
         movies = json.results;
         setMovies(movies);
       });
