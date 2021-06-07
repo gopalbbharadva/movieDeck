@@ -24,13 +24,16 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
   };
 
   const addToFavorites = () => {
-    firebase.firestore().collection("users").doc(currentUser.uid).set(
-      {
+    firebase
+      .firestore()
+      .collection("users")
+      .doc(currentUser.uid)
+      .collection("movies")
+      .add({
         title: currentMovie.title,
         image: currentMovie.poster_path,
         rating: currentMovie.vote_average,
-      },{merge:true}
-    );
+      });
   };
 
   return (

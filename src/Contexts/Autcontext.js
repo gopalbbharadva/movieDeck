@@ -17,7 +17,7 @@ const Authprovider = ({ children }) => {
       .createUserWithEmailAndPassword(email, password)
       .then((cred) => {
         return firebase.firestore().collection("users").doc(cred.user.uid).set({
-          email: email,
+            
         });
       })
       .catch((err) => {
