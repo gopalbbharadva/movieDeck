@@ -38,7 +38,7 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
 
   return (
     // <>{console.log(currentMovie)}</>
-    <div
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       onClick={modalHandler}
@@ -48,8 +48,8 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
     >
       <div className="sub-modal">
         <motion.img
-          initial={{ y: "-10vh" }}
-          animate={{ y: "0" }}
+          // initial={{ y: "-10vh" }}
+          // animate={{ y: "0" }}
           src={
             currentMovie.backdrop_path
               ? imagepath + currentMovie.backdrop_path
@@ -69,6 +69,6 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

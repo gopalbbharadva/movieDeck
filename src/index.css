@@ -27,6 +27,7 @@ body {
 }
 #rating {
   font-weight: bold;
+  padding: 0;
 }
 
 /* signup */
@@ -43,7 +44,7 @@ body {
 .imagediv {
   border: none;
   overflow: hidden;
-  height: 50vh;
+  max-height: 10%;
   position: relative;
   opacity: 0.8;
 }
@@ -81,7 +82,7 @@ body {
 .sub-modal img {
   border-radius: 1rem 1rem 0 0;
   height: 250px;
-  object-fit: fill;
+  object-fit: cover;
   width: 100%;
   /* object-fit: contain; */
 }

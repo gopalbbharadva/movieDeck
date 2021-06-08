@@ -3,11 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Carditem from "./Carditem";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Card from "@material-ui/core/Card";
-import Typography from "@material-ui/core/Typography";
-import CardActionArea from "@material-ui/core/CardActionArea";
 import Moviemodal from "./Moviemodal";
 
 const movie_api =
@@ -15,7 +10,7 @@ const movie_api =
 const imagepath = "https://image.tmdb.org/t/p/w1280";
 export default function Movie() {
   let [movies, setMovies] = useState([]);
-  
+
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   useEffect(() => {
@@ -71,6 +66,9 @@ export default function Movie() {
       left: 0,
       right: 0,
     },
+    gridContainer: {
+      padding: "1rem 2rem",
+    },
   });
   const classes = styles();
 
@@ -88,10 +86,11 @@ export default function Movie() {
     <>
       <div className={classes.toolbar}></div>
       <Container>
-        <Grid container spacing={4}>
+        <Grid container className={classes.gridContainer} spacing={4}>
           {movies.map((item) => {
             return (
               <Grid
+                classname={classes.gridItem}
                 xs={6}
                 onClick={() => selectMovie(item)}
                 key={item.id}
@@ -108,8 +107,8 @@ export default function Movie() {
             );
           })}
         </Grid>
-        <div >
-          {selectedMovie &&  (
+        <div>
+          {selectedMovie && (
             <Moviemodal
               currentMovie={selectedMovie}
               setSelectedMovie={setSelectedMovie}
