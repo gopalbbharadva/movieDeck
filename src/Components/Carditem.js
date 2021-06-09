@@ -10,7 +10,7 @@ const styles = makeStyles({
   cardcontent: {
     backgroundColor: "#818CF8",
     display: "flex",
-    justifyContent: "space-between",
+    flexDirection:'column',
   },
   cardimg: {
     height:'400px',
@@ -19,6 +19,7 @@ const styles = makeStyles({
   },
   title: {
     color: "black",
+    alignSelf:'flex-start'
   },
 });
 

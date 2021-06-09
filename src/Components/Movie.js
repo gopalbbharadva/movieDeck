@@ -86,7 +86,7 @@ export default function Movie() {
     <>
       <div className={classes.toolbar}></div>
       <Container>
-        <Grid container className={classes.gridContainer} spacing={4}>
+        <Grid container  spacing={4}>
           {movies.map((item) => {
             return (
               <Grid

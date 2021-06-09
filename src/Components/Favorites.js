@@ -69,7 +69,7 @@ export default function Movie() {
     <>
       <div className={classes.toolbar}></div>
       <Container>
-        <Grid container className={classes.gridContainer} spacing={4}>
+        <Grid container  spacing={4}>
           {favorites.map((item) => {
             return (
               <Grid xs={6} key={item.id} sm={4} lg={3} item>
