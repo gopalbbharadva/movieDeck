@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/movieDeck/static/css/main.ee640720.chunk.css",
-    "main.js": "/movieDeck/static/js/main.4b2ce450.chunk.js",
-    "main.js.map": "/movieDeck/static/js/main.4b2ce450.chunk.js.map",
+    "main.css": "/movieDeck/static/css/main.5afd146a.chunk.css",
+    "main.js": "/movieDeck/static/js/main.66d25fcd.chunk.js",
+    "main.js.map": "/movieDeck/static/js/main.66d25fcd.chunk.js.map",
     "runtime-main.js": "/movieDeck/static/js/runtime-main.b7af4577.js",
     "runtime-main.js.map": "/movieDeck/static/js/runtime-main.b7af4577.js.map",
     "static/css/2.97503911.chunk.css": "/movieDeck/static/css/2.97503911.chunk.css",
@@ -12,14 +12,14 @@
     "static/js/3.3cd216b5.chunk.js.map": "/movieDeck/static/js/3.3cd216b5.chunk.js.map",
     "index.html": "/movieDeck/index.html",
     "static/css/2.97503911.chunk.css.map": "/movieDeck/static/css/2.97503911.chunk.css.map",
-    "static/css/main.ee640720.chunk.css.map": "/movieDeck/static/css/main.ee640720.chunk.css.map",
+    "static/css/main.5afd146a.chunk.css.map": "/movieDeck/static/css/main.5afd146a.chunk.css.map",
     "static/js/2.5bb18769.chunk.js.LICENSE.txt": "/movieDeck/static/js/2.5bb18769.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b7af4577.js",
     "static/css/2.97503911.chunk.css",
     "static/js/2.5bb18769.chunk.js",
-    "static/css/main.ee640720.chunk.css",
-    "static/js/main.4b2ce450.chunk.js"
+    "static/css/main.5afd146a.chunk.css",
+    "static/js/main.66d25fcd.chunk.js"
   ]
 }
