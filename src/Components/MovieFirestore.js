@@ -11,6 +11,7 @@ const MovieFirestore = (collection) => {
       .collection("users")
       .doc(currentUser.uid)
       .collection(collection)
+      .orderBy('createdAt','desc')
       .onSnapshot((snap) => {
         const documents = [];
         snap.forEach((doc) => {

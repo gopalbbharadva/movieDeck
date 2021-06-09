@@ -1,25 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
+import firebase from "firebase";
+import { useAuth } from "../Contexts/Autcontext";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import { toast } from "material-react-toastify";
 
 const styles = makeStyles({
   cardcontent: {
+    padding: "1rem 1rem",
     backgroundColor: "#818CF8",
     display: "flex",
-    flexDirection:'column',
+    flexDirection: "column",
   },
   cardimg: {
-    height:'400px',
-    width:'100%',
+    height: "400px",
+    width: "100%",
     objectFit: "cover",
   },
   title: {
     color: "black",
-    alignSelf:'flex-start'
+    alignSelf: "flex-start",
+    textAlign: "start",
+  },
+  delete: {
+    padding: "0",
+    background: "red",
+    "&:hover": {
+      backgroundColor: "#F87171",
+    },
   },
 });
 
@@ -33,6 +46,26 @@ const imagepath = "https://image.tmdb.org/t/p/w1280";
 
 export default function Carditem(props) {
   const classes = styles();
+  const { currentUser } = useAuth();
+
+  const deleteHandler = () => {
+    const _isDelete = window.confirm(
+      `Are you sure you want to delete ${props.movieTitle}`
+    );
+    if (_isDelete) {
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(currentUser.uid)
+        .collection("movies")
+        .doc(props.id)
+        .delete();
+      toast.success(`${props.movieTitle} successfully deleted`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 1500,
+      });
+    }
+  };
   return (
     <>
       {/* {console.log(movies)} */}
@@ -58,9 +91,13 @@ export default function Carditem(props) {
             <Typography id="rating" className={setColor(props.movieRating)}>
               {props.movieRating}
             </Typography>
+            {props.createdAt && (
+              <Button onClick={deleteHandler} className={classes.delete}>
+                Delete
+              </Button>
+            )}
           </CardContent>
         </CardActionArea>
-        {/* {console.log(setColor(props.movieRating))}; */}
       </Card>
     </>
   );

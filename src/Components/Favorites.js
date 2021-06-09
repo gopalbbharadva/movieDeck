@@ -1,17 +1,8 @@
-// import React from "react";
-// import MovieFirestore from "./MovieFirestore";
-
-// export default function Favorites() {
-//   const { favorites } = MovieFirestore("movies");
-//   return <div>{console.log(favorites)}</div>;
-// }
-
 import React, { useEffect, useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Carditem from "./Carditem";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
-import Moviemodal from "./Moviemodal";
 import MovieFirestore from "./MovieFirestore";
 
 const imagepath = "https://image.tmdb.org/t/p/w1280";
@@ -74,9 +65,11 @@ export default function Movie() {
             return (
               <Grid xs={6} key={item.id} sm={4} lg={3} item>
                 <Carditem
+                  id={item.id}
                   imgUrl={item.image}
                   movieTitle={item.title}
                   movieRating={item.rating}
+                  createdAt={item.createdAt}
                 />
               </Grid>
             );

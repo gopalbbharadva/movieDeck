@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../Contexts/Autcontext";
 import { motion } from "framer-motion";
 import firebase from "firebase";
+import { toast } from "material-react-toastify";
 
 const imagepath = "https://image.tmdb.org/t/p/w1280";
 
@@ -24,16 +25,28 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
   };
 
   const addToFavorites = () => {
-    firebase
-      .firestore()
-      .collection("users")
-      .doc(currentUser.uid)
-      .collection("movies")
-      .add({
-        title: currentMovie.title,
-        image: currentMovie.poster_path,
-        rating: currentMovie.vote_average,
+    try {
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(currentUser.uid)
+        .collection("movies")
+        .add({
+          title: currentMovie.title,
+          image: currentMovie.poster_path,
+          rating: currentMovie.vote_average,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        });
+      toast.success(`${currentMovie.title} is added to watch list`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 1500,
       });
+    } catch {
+      toast.error(`Failed to add movie ${currentMovie.title}`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+        autoClose: 1500,
+      });
+    }
   };
 
   return (
@@ -60,13 +73,21 @@ export default function Moviemodal({ currentMovie, setSelectedMovie }) {
           // animate={{ y: "0" }}
         />
         <div className="modal-overview">
-          {currentUser && <button onClick={addToFavorites}>Add</button>}
-          <h3>Overview</h3>
+          <div style={{ display: "flex" }}>
+            <h3 style={{ margin: "0.5rem 0 0.5rem 1rem" }}>Overview</h3>
+            {currentUser && (
+              <button className="addButton" onClick={addToFavorites}>
+                +
+              </button>
+            )}
+          </div>
           <p className="over-para">{currentMovie.overview}</p>
-          <h3>Rating</h3>
-          <p className={setColor(currentMovie.vote_average)}>
-            {currentMovie.vote_average}
-          </p>
+          <div style={{display:'flex'}}>
+            <h3>Rating</h3>
+            <p className={setColor(currentMovie.vote_average)}>
+              {currentMovie.vote_average}
+            </p>
+          </div>
         </div>
       </div>
     </motion.div>

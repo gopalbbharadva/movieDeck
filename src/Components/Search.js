@@ -54,7 +54,6 @@ export default function Search() {
     typo: {
       margin: "1rem",
       width: "100%",
-      //   padding: "0.4rem",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
@@ -67,17 +66,12 @@ export default function Search() {
   const classes = styles();
   const selectMovie = (currentMovie) => {
     setSelectedMovie(currentMovie);
-    // setFlag(true);
   };
 
   const setVote = (e) => {
     rating = e.target.value;
     setRating(rating);
   };
-  // const resetFlag = () => {
-  //   setSelectedMovie(null);
-  //   // setFlag(false);
-  // };
 
   return (
     <div
