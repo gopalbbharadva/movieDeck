@@ -117,3 +117,6 @@ body {
   font-size: 2rem;
   background: transparent;
 }
+.currentNavbar{
+  font-weight: bold;
+}  

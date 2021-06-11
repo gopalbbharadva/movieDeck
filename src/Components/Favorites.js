@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Carditem from "./Carditem";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 import MovieFirestore from "./MovieFirestore";
 
-const imagepath = "https://image.tmdb.org/t/p/w1280";
 export default function Movie() {
   //   let [movies, setMovies] = useState([]);
   const { favorites } = MovieFirestore("movies");
@@ -30,7 +29,6 @@ export default function Movie() {
       margin: "80px auto",
       maxHeight: "60%",
       maxWidth: "20%",
-      display: "block",
       boxShadow: "0 0 2px 1px rgba(0, 0, 0, 0.5)",
     },
     title: {

@@ -108,7 +108,7 @@ export default function Search() {
             onChange={setVote}
           >
             <FormControlLabel
-              value="8"
+              value="5"
               control={<Radio required />}
               label="<5"
             />
