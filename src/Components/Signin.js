@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Cardcontent from "@material-ui/core/CardContent";
-import { makeStyles, makestyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../Contexts/Autcontext";
 import { toast } from "material-react-toastify";
@@ -32,7 +32,7 @@ const styles = makeStyles({
 });
 export default function Signin() {
   const classes = styles();
-  const { signIn,currentUser } = useAuth();
+  const { signIn } = useAuth();
 
   let routeHistory = useHistory();
 

@@ -79,7 +79,7 @@ export default function Navbar() {
           <Typography className={classes.typo} variant="h5" color="secondary">
             <NavLink
               to="/"
-              activeClassName="currentNavbar"
+              
               className={classes.home}
             >
               moviesDeck

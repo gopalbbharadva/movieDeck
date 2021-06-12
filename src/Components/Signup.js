@@ -9,7 +9,6 @@ import { NavLink } from "react-router-dom";
 import { useAuth } from "../Contexts/Autcontext";
 import { toast } from "material-react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import firebase from "firebase/app";
 import { useHistory } from "react-router-dom";
 
 toast.configure();
@@ -38,7 +37,7 @@ export default function Signup() {
   let emailRef = useRef("");
   let passwordRef = useRef("");
   let cnfPasswordRef = useRef("");
-  const { signUp, currentUser } = useAuth();
+  const { signUp } = useAuth();
   const [error, setError] = useState();
 
   const formSubmitHandler = async (e) => {

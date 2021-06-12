@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Textfield from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -16,7 +16,6 @@ const search_api =
 
 export default function Search() {
   let voteMovie = [];
-  let [flag, setFlag] = useState(true);
   const [searchMovie, setSearchMovie] = useState();
   // let [movies, setMovies] = useState([]);
   let [rating, setRating] = useState(0);
@@ -122,7 +121,7 @@ export default function Search() {
 
       <Container>
         <Grid container spacing={4}>
-          {ratingMovie.length != 0 ? (
+          {ratingMovie.length !== 0 ? (
             ratingMovie.map((item) => {
               return (
                 <Grid

@@ -1,12 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); */
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 body {
   background-color: #ddd6fe;
+  font-family: 'Lato', sans-serif;
 }
-
-/* .tag{
-  background-color: #6D28D9;
-  padding: 2px 3px;
-} */
 .green {
   color: #047857;
   margin: 0;
@@ -63,13 +60,6 @@ body {
   height: 100%;
   background: rgba(139, 150, 143, 0.5);
 }
-
-/* .main-modal img {
-  max-height: 80%;
-  max-width: 60%;
-  display: block;
-  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
-} */
 .sub-modal {
   /* height: 60%; */
   position: absolute;
@@ -119,4 +109,7 @@ body {
 }
 .currentNavbar{
   font-weight: bold;
-}  
+} 
+h1{
+  color: #6366f1;
+} 

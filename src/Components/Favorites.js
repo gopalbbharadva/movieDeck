@@ -58,21 +58,25 @@ export default function Movie() {
     <>
       <div className={classes.toolbar}></div>
       <Container>
-        <Grid container  spacing={4}>
-          {favorites.map((item) => {
-            return (
-              <Grid xs={6} key={item.id} sm={4} lg={3} item>
-                <Carditem
-                  id={item.id}
-                  imgUrl={item.image}
-                  movieTitle={item.title}
-                  movieRating={item.rating}
-                  createdAt={item.createdAt}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
+        {favorites.length > 0 ? (
+          <Grid container spacing={4}>
+            {favorites.map((item) => {
+              return (
+                <Grid xs={6} key={item.id} sm={4} lg={3} item>
+                  <Carditem
+                    id={item.id}
+                    imgUrl={item.image}
+                    movieTitle={item.title}
+                    movieRating={item.rating}
+                    createdAt={item.createdAt}
+                  />
+                </Grid>
+              );
+            })}
+          </Grid>
+        ) : (
+          <h1>No favorite movies found.</h1>
+        )}
       </Container>
     </>
   );
