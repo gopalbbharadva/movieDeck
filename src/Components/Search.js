@@ -16,6 +16,7 @@ const search_api =
 
 export default function Search() {
   let voteMovie = [];
+  let tempMovie = [];
   const [searchMovie, setSearchMovie] = useState();
   // let [movies, setMovies] = useState([]);
   let [rating, setRating] = useState(0);
@@ -34,8 +35,15 @@ export default function Search() {
         // // setMovies(movies.results);
         // setRatingMovie(movies.results);
         movies.results.filter((item) => {
-          if (item.vote_average <= parseInt(rating)) voteMovie.push(item);
-          setRatingMovie(voteMovie);
+          if (item.vote_average <= parseInt(rating)) {
+            console.log(parseInt(rating));
+            voteMovie.push(item);
+          } else if (item.vote_average > parseInt(rating)) {
+            console.log(parseInt(rating));
+            tempMovie.push(item);
+          }
+          if (parseInt(rating) === 5) setRatingMovie(voteMovie);
+          else setRatingMovie(tempMovie);
         });
       });
     console.log(rating);
@@ -98,23 +106,42 @@ export default function Search() {
           placeholder="Search movies..."
           variant="filled"
         />
-        <div style={{ alignSelf: "center", padding: "1rem" }}>
-          <FormLabel>Rating</FormLabel>
-          <RadioGroup
-            aria-label="gender"
-            name="gender1"
-            value={rating}
-            onChange={setVote}
-          >
-            <FormControlLabel
-              value="5"
-              control={<Radio required />}
-              label="<5"
-            />
-            {/* <FormControlLabel value="5" control={<Radio />} label=">5" /> */}
-          </RadioGroup>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: "1rem",
+          }}
+        >
+          <FormLabel style={{ textAlign: "center",color:'#6366f1'}} >Rating</FormLabel>
+          <div style={{ display: "flex" }}>
+            <RadioGroup
+              aria-label="number"
+              name="number1"
+              value={rating}
+              onChange={setVote}
+            >
+              <FormControlLabel
+                value="5"
+                control={<Radio required />}
+                label="till 5"
+              />
+            </RadioGroup>
+            <RadioGroup
+              aria-label="number"
+              name="number1"
+              value={rating}
+              onChange={setVote}
+            >
+              <FormControlLabel
+                value="6"
+                control={<Radio />}
+                label="beyond 6"
+              />
+            </RadioGroup>
+          </div>
         </div>
-        <Button type="submit" className={classes.submitBtn} variant="outlined">
+        <Button type="submit" className={classes.submitBtn} variant="contained">
           Search
         </Button>
       </form>
@@ -141,7 +168,18 @@ export default function Search() {
               );
             })
           ) : (
-            <div style={{width:'100%',margin:'3rem',fontSize:'1.5rem',color:'red', display:'flex',justifyContent:'center'}}>No movies found</div>
+            <div
+              style={{
+                width: "100%",
+                margin: "3rem",
+                fontSize: "1.5rem",
+                color: "red",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              No movies found
+            </div>
           )}
           <div>
             {selectedMovie && (
